@@ -2,14 +2,14 @@
   <div class="stage">
     <div class="painting-name">
       <span v-if="displayStyle === 'abbreviations'">{{ painting.name }}</span>
-      <img v-else :src="`../../assets/${painting.name.toLowerCase()}.png`">
+      <img v-else :src="require(`../../assets/${painting.name.toLowerCase()}.png`)">
     </div>
     <div class="stage-name"
       @click.stop="selectStage"
       @touch.stop="selectStage"
     >
         <span v-if="!stageName || displayStyle === 'abbreviations'">{{ stageName || '&nbsp;' }}</span>
-        <img v-else :src="`../../assets/${stageName.toLowerCase()}.png`">
+        <img v-else :src="require(`../../assets/${stageName.toLowerCase()}.png`)">
     </div>
     <div v-if="stageName" class="stage-stars">
       <star-category v-for="category in starCategories"

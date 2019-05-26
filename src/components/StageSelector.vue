@@ -14,7 +14,7 @@
         @touch.stop="selectStage(defaultStage.name)"
       >
         <span v-if="displayStyle === 'abbreviations'">{{ defaultStage.name }}</span>
-        <img v-else :src="`../../assets/${defaultStage.name.toLowerCase()}.png`">
+        <img v-else :src="require(`../../assets/${defaultStage.name.toLowerCase()}.png`)">
       </div>
     </div>
   </div>
