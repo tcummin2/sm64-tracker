@@ -1,0 +1,188 @@
+[
+  {
+    "name": "BoB",
+    "starCategories": {
+      "loose": 1,
+      "box": 1,
+      "other": 3,
+      "redCoins": 1,
+      "hundredCoins": 1
+    }
+  },
+  {
+    "name": "Aquarium",
+    "starCategories": {
+      "redCoins": 1
+    }
+  },
+  {
+    "name": "BBH",
+    "starCategories": {
+      "loose": 1,
+      "other": 4,
+      "redCoins": 1,
+      "hundredCoins": 1
+    }
+  },
+  {
+    "name": "BitDW",
+    "starCategories": {
+      "redCoins": 1,
+      "hundredCoins": 0
+    }
+  },
+  {
+    "name": "BitFS",
+    "starCategories": {
+      "redCoins": 1,
+      "hundredCoins": 0
+    }
+  },
+  {
+    "name": "CCM",
+    "starCategories": {
+      "redCoins": 1,
+      "hundredCoins": 1
+    }
+  },
+  {
+    "name": "DDD",
+    "starCategories": {
+      "loose": 2,
+      "other": 3,
+      "redCoins": 1,
+      "hundredCoins": 1
+    }
+  },
+  {
+    "name": "HMC",
+    "starCategories": {
+      "loose": 5,
+      "redCoins": 1,
+      "hundredCoins": 1
+    }
+  },
+  {
+    "name": "JRB",
+    "starCategories": {
+      "loose": 1,
+      "box": 1,
+      "other": 3,
+      "redCoins": 1,
+      "hundredCoins": 1
+    }
+  },
+  {
+    "name": "LLL",
+    "starCategories": {
+      "loose": 3,
+      "other": 2,
+      "redCoins": 1,
+      "hundredCoins": 1
+    }
+  },
+  {
+    "name": "Metal",
+    "starCategories": {
+      "redCoins": 1,
+      "hundredCoins": 0
+    }
+  },
+  {
+    "name": "PSS",
+    "starCategories": {
+      "box": 1,
+      "other": 1
+    }
+  },
+  {
+    "name": "RR",
+    "starCategories": {
+      "loose": 4,
+      "redCoins": 1,
+      "hundredCoins": 1
+    }
+  },
+  {
+    "name": "SL",
+    "starCategories": {
+      "loose": 3,
+      "box": 1,
+      "other": 1,
+      "redCoins": 1,
+      "hundredCoins": 1
+    }
+  },
+  {
+    "name": "SSL",
+    "starCategories": {
+      "loose": 2,
+      "other": 3,
+      "redCoins": 1,
+      "hundredCoins": 1
+    }
+  },
+  {
+    "name": "THI",
+    "starCategories": {
+      "box": 1,
+      "other": 4,
+      "redCoins": 1,
+      "hundredCoins": 1
+    }
+  },
+  {
+    "name": "TTC",
+    "starCategories": {
+      "loose": 5,
+      "redCoins": 1,
+      "hundredCoins": 1
+    }
+  },
+  {
+    "name": "TTM",
+    "starCategories": {
+      "loose": 4,
+      "other": 1,
+      "redCoins": 1,
+      "hundredCoins": 1
+    }
+  },
+  {
+    "name": "Vanish",
+    "starCategories": {
+      "redCoins": 1
+    }
+  },
+  {
+    "name": "WDW",
+    "starCategories": {
+      "loose": 2,
+      "box": 2,
+      "other": 1,
+      "redCoins": 1,
+      "hundredCoins": 1
+    }
+  },
+  {
+    "name": "WF",
+    "starCategories": {
+      "loose": 4,
+      "other": 1,
+      "redCoins": 1,
+      "hundredCoins": 1
+    }
+  },
+  {
+    "name": "Wing",
+    "starCategories": {
+      "redCoins": 1
+    }
+  },
+  {
+    "name": "WMotR",
+    "starCategories": {
+      "redCoins": 1
+    }
+  }
+]
