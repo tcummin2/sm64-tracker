@@ -39,8 +39,9 @@ const mutations = {
     Vue.set(stage[category], starIndex, !stage[category][starIndex])
   },
   resetState(state) {
-    Vue.set(state, 'paintingMap', utils.toObject(stages, stage => ({ [stage.name]: '' })))
-    Vue.set(state, 'stars', utils.toObject(stages, stage => ({
+    var allStages = [].concat(...stages.map(floor => floor.stages))
+    Vue.set(state, 'paintingMap', utils.toObject(allStages, stage => ({ [stage.name]: '' })))
+    Vue.set(state, 'stars', utils.toObject(allStages, stage => ({
       [stage.name]: utils.mapObject(stage.starCategories, ([s, numStars]) => ({
         [s]: new Array(numStars).fill(false)
       }))

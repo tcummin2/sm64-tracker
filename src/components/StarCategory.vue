@@ -26,7 +26,7 @@ export default {
         redCoins: 'redcoin.png',
         loose: 'star.png',
         hundredCoins: 'yellowcoin.png',
-        box: 'yellowcoin.png',
+        box: 'box.png',
         other: 'star.png'
       }[this.category]
     }

@@ -4,13 +4,11 @@
     @touch="closeStageSelector"
   >
     <style-switcher />
-    <stage v-for="painting in stages"
-      :key="painting.name"
-      :painting="painting"
-      @select-stage="showStageSelector"
-    >
-      {{ painting.name }}
-    </stage>
+    <location v-for="location in stages"
+      :key="location.location"
+      :location="location.location"
+      :stages="location.stages"
+      @select-stage="showStageSelector" />
     <stage-selector v-show="focusedPainting"
       :focusedPainting="focusedPainting"
       :coordinates="stageSelectorCoordinates"
@@ -21,12 +19,12 @@
 <script>
 import stages from '../stages.json'
 import StyleSwitcher from './StyleSwitcher'
-import Stage from './Stage'
 import StageSelector from './StageSelector'
+import Location from './Location'
 
 export default {
   name: 'App',
-  components: { StyleSwitcher, Stage, StageSelector },
+  components: { StyleSwitcher, Location, StageSelector },
   data() {
     return {
       stages: stages,

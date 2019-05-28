@@ -31,14 +31,14 @@ export default {
   props: ['focusedPainting', 'coordinates'],
   data() {
     return {
-      stages: stages
+      stages: [].concat(...stages.map(location => location.stages))
     }
   },
   computed: Object.assign(mapGetters(['getStageNameByPainting', 'selectedStages', 'displayStyle']), {
     style() {
       return {
-        top: `${this.coordinates.top + TOP_OFFSET}px`,
-        left: `${this.coordinates.left }px`
+        top: `${this.coordinates.top + TOP_OFFSET + (window.scrollY || window.pageYOffset)}px`,
+        left: `${this.coordinates.left + (window.scrollX || window.pageXOffset)}px`
       }
     },
     stage() {
@@ -75,6 +75,7 @@ export default {
       margin: 0px 3px;
       cursor: pointer;
       border: 1px solid transparent;
+      height: 24px;
 
       &:hover {
         border: 1px solid grey;
@@ -83,6 +84,7 @@ export default {
       &.selected {
         color: blue;
       }
+
       &.taken {
         opacity: 0.5;
       }
