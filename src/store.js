@@ -40,8 +40,11 @@ const mutations = {
   },
   resetState(state) {
     var allStages = [].concat(...stages.map(floor => floor.stages))
+    var floors = stages.filter(floor => floor.starCategories && Object.keys(floor.starCategories).length)
+
     Vue.set(state, 'paintingMap', utils.toObject(allStages, stage => ({ [stage.name]: '' })))
-    Vue.set(state, 'stars', utils.toObject(allStages, stage => ({
+
+    Vue.set(state, 'stars', utils.toObject([...allStages, ...floors], stage => ({
       [stage.name]: utils.mapObject(stage.starCategories, ([s, numStars]) => ({
         [s]: new Array(numStars).fill(false)
       }))

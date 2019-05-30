@@ -5,8 +5,8 @@
   >
     <style-switcher />
     <location v-for="location in stages"
-      :key="location.location"
-      :location="location.location"
+      :key="location.name"
+      :name="location.name"
       :stages="location.stages"
       @select-stage="showStageSelector" />
     <stage-selector v-show="focusedPainting"

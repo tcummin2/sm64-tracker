@@ -1,6 +1,6 @@
 [
   {
-    "location": "First Floor",
+    "name": "First Floor",
     "stages": [
       {
         "name": "BoB",
@@ -78,7 +78,11 @@
     ]
   },
   {
-    "location": "Basement",
+    "name": "Basement",
+    "starCategories": {
+      "mips": 2,
+      "toad": 1
+    },
     "stages": [
       {
         "name": "LLL",
@@ -125,7 +129,10 @@
     ]
   },
   {
-    "location": "Upstairs",
+    "name": "Upstairs",
+    "starCategories": {
+      "toad": 1
+    },
     "stages": [
       {
         "name": "WDW",
@@ -168,7 +175,10 @@
     ]
   },
   {
-    "location": "Tippy",
+    "name": "Tippy",
+    "starCategories": {
+      "toad": 1
+    },
     "stages": [
       {
         "name": "TTC",
@@ -195,7 +205,7 @@
     ]
   },
   {
-    "location": "Other",
+    "name": "Other",
     "stages": [
       {
         "name": "Metal",

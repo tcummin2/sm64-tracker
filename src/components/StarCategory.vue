@@ -27,7 +27,9 @@ export default {
         loose: 'star.png',
         hundredCoins: 'yellowcoin.png',
         box: 'box.png',
-        other: 'star.png'
+        other: 'star.png',
+        toad: 'toad.png',
+        mips: 'mips.png'
       }[this.category]
     }
   }),
@@ -50,6 +52,7 @@ export default {
 .star-category {
   display: inline-block;
   margin: 0px 5px;
+  vertical-align: middle;
 }
 
 img {
