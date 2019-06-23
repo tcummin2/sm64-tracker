@@ -8,7 +8,8 @@ const utils = {
   toObject: (arr, func) => Object.assign(...arr.map(func)),
   mapObject(obj, func) {
     return this.toObject(Object.entries(obj), func)
-  }
+  },
+  flatten: arr => [].concat(...arr)
 }
 
 const state = {
@@ -22,7 +23,10 @@ const getters = {
   selectedStages: state => Object.values(state.paintingMap).filter(stage => !!stage),
   getStarsByStage: state => name => state.stars[name],
   getStarsByCategoryByStage: (state, getters) => (stageName, category) => getters.getStarsByStage(stageName)[category],
-  displayStyle: state => state.displayStyle
+  displayStyle: state => state.displayStyle,
+  completedStages: state => Object.keys(state.stars)
+    .filter(stage => utils.flatten(Object.values(state.stars[stage])).every(star => star)),
+  isStageComplete: (state, getters) => stageName => getters.completedStages.includes(stageName)
 }
 
 const mutations = {

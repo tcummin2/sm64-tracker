@@ -1,8 +1,19 @@
 <template>
   <div class="stage" :class="{ images: displayStyle === 'image' }">
     <div class="painting-name">
-      <span v-if="displayStyle === 'abbreviations'">{{ painting.name }}</span>
-      <img v-else :src="require(`../../assets/${painting.name.toLowerCase()}.png`)">
+      <label class="image-container">
+        <span v-if="displayStyle === 'abbreviations'"
+          :class="{ completed: isCompleted }"
+        >
+          {{ painting.name }}
+        </span>
+        <img v-else
+          :src="require(`../../assets/${painting.name.toLowerCase()}.png`)"
+          :class="{completed: isCompleted}">
+        <img v-if="isCompleted"
+          :src="require('../../assets/checkmark.svg')"
+          class="checkmark">
+      </label>
     </div>
     <div class="arrow">=></div>
     <div class="stage-name"
@@ -30,7 +41,7 @@ export default {
   name: 'Stage',
   props: ['painting'],
   components: { StarCategory },
-  computed: Object.assign(mapGetters(['getStageNameByPainting', 'getStarsByStage', 'displayStyle']), {
+  computed: Object.assign(mapGetters(['getStageNameByPainting', 'getStarsByStage', 'displayStyle', 'isStageComplete']), {
     stageName() {
       return this.getStageNameByPainting(this.painting.name)
     },
@@ -39,6 +50,9 @@ export default {
     },
     starCategories() {
       return Object.keys(this.stars)
+    },
+    isCompleted() {
+      return this.isStageComplete(this.stageName)
     }
   }),
   methods: {
@@ -109,5 +123,24 @@ img {
   height: 24px;
   width: 24px;
   vertical-align: middle;
+}
+
+.image-container {
+  position: relative;
+  display: inline-block;
+}
+
+.completed {
+  opacity: 0.5
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  pointer-events: none;
 }
 </style>
