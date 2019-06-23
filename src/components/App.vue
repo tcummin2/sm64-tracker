@@ -15,6 +15,7 @@
         :focusedPainting="focusedPainting"
         :coordinates="stageSelectorCoordinates"
         @close="closeStageSelector" />
+      <paths />
     </div>
   </div>
 </template>
@@ -24,10 +25,11 @@ import stages from '../stages.json'
 import StyleSwitcher from './StyleSwitcher'
 import StageSelector from './StageSelector'
 import Location from './Location'
+import Paths from './Paths'
 
 export default {
   name: 'App',
-  components: { StyleSwitcher, Location, StageSelector },
+  components: { StyleSwitcher, Location, StageSelector, Paths },
   data() {
     return {
       stages: stages,
