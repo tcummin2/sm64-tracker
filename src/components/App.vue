@@ -3,16 +3,19 @@
     @click="closeStageSelector"
     @touch="closeStageSelector"
   >
+    <div>Seed: <input type="text" /></div>
     <style-switcher />
-    <location v-for="location in stages"
-      :key="location.name"
-      :name="location.name"
-      :stages="location.stages"
-      @select-stage="showStageSelector" />
-    <stage-selector v-show="focusedPainting"
-      :focusedPainting="focusedPainting"
-      :coordinates="stageSelectorCoordinates"
-      @close="closeStageSelector" />
+    <div class="stages">
+      <location v-for="location in stages"
+        :key="location.name"
+        :name="location.name"
+        :stages="location.stages"
+        @select-stage="showStageSelector" />
+      <stage-selector v-show="focusedPainting"
+        :focusedPainting="focusedPainting"
+        :coordinates="stageSelectorCoordinates"
+        @close="closeStageSelector" />
+    </div>
   </div>
 </template>
 
@@ -44,3 +47,12 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.stages {
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+  flex-wrap: wrap;
+}
+</style>

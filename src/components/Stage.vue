@@ -57,6 +57,7 @@ export default {
   grid-template-columns: 75px 65px 75px auto;
   text-align: center;
   height: 30px;
+  width: 380px;
 
   &.images {
     -ms-grid-columns: 75px 65px 75px auto;
