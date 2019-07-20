@@ -3,7 +3,9 @@
     <div class="title">Paths</div>
     <div v-for="(path, i) in paths" :key="i" class="path">
       <span v-for="(stage, j) in path" :key="j">
-        {{ stage }}
+        <stage-display
+          :stageName="stage"
+          :leadsTo="j + 1 < path.length ? path[j + 1] : path[1]" />
         <span v-if="j + 1 < path.length">=></span>
       </span>
     </div>
@@ -12,6 +14,7 @@
 
 <script>
 import { mapGetters, mapState } from 'vuex'
+import StageDisplay from './StageDisplay'
 
 const setDifference = (arr1, arr2) => {
   let a = new Set(arr1)
@@ -21,6 +24,7 @@ const setDifference = (arr1, arr2) => {
 
 export default {
   name: 'Paths',
+  components: { StageDisplay },
   computed: {
     ...mapState(['paintingMap']),
     paths() {
@@ -77,8 +81,11 @@ export default {
   max-width: 380px;
 }
 
-.path:not(:last-child) {
-  border-bottom: 1px solid white;
+.path {
+  padding: 5px 0px;
 
+  &:not(:last-child) {
+    border-bottom: 1px solid white;
+  }
 }
 </style>

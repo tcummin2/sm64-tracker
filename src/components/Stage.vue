@@ -1,28 +1,15 @@
 <template>
   <div class="stage" :class="{ images: displayStyle === 'image' }">
-    <div class="painting-name">
-      <label class="image-container">
-        <span v-if="displayStyle === 'abbreviations'"
-          :class="{ completed: isCompleted }"
-        >
-          {{ painting.name }}
-        </span>
-        <img v-else
-          :src="require(`../../assets/${painting.name.toLowerCase()}.png`)"
-          :class="{completed: isCompleted}">
-        <img v-if="isCompleted"
-          :src="require('../../assets/checkmark.svg')"
-          class="checkmark">
-      </label>
-    </div>
+    <stage-display
+      :stageName="painting.name"
+      :leadsTo="stageName" />
     <div class="arrow">=></div>
     <div class="stage-name"
       :class="{ empty: !stageName }"
       @click.stop="selectStage"
       @touch.stop="selectStage"
     >
-      <span v-if="!stageName || displayStyle === 'abbreviations'">{{ stageName || '&nbsp;' }}</span>
-      <img v-else :src="require(`../../assets/${stageName.toLowerCase()}.png`)">
+      <stage-display :stageName="stageName" :isTrueStage="true" />
     </div>
     <div v-if="stageName" class="stage-stars">
       <star-category v-for="category in starCategories"
@@ -36,12 +23,14 @@
 <script>
 import { mapGetters } from 'vuex'
 import StarCategory from './StarCategory'
+import StageDisplay from './StageDisplay'
 
 export default {
   name: 'Stage',
   props: ['painting'],
-  components: { StarCategory },
-  computed: Object.assign(mapGetters(['getStageNameByPainting', 'getStarsByStage', 'displayStyle', 'isStageComplete']), {
+  components: { StarCategory, StageDisplay },
+  computed: {
+    ...mapGetters(['getStageNameByPainting', 'getStarsByStage', 'displayStyle']),
     stageName() {
       return this.getStageNameByPainting(this.painting.name)
     },
@@ -50,11 +39,8 @@ export default {
     },
     starCategories() {
       return Object.keys(this.stars)
-    },
-    isCompleted() {
-      return this.isStageComplete(this.stageName)
     }
-  }),
+  },
   methods: {
     selectStage(e) {
       this.$emit('select-stage', this.painting, e)
@@ -76,18 +62,6 @@ export default {
   &.images {
     -ms-grid-columns: 75px 65px 75px auto;
     grid-template-columns: 75px 65px 75px auto;
-  }
-}
-
-.painting-name {
-  margin-right: 5px;
-  grid-column: 1;
-  -ms-grid-column: 1;
-  text-align: right;
-  margin: auto;
-
-  .images & {
-    text-align: center;
   }
 }
 
@@ -117,30 +91,5 @@ export default {
   -ms-grid-column: 4;
   display: block;
   margin: auto 0;
-}
-
-img {
-  height: 24px;
-  width: 24px;
-  vertical-align: middle;
-}
-
-.image-container {
-  position: relative;
-  display: inline-block;
-}
-
-.completed {
-  opacity: 0.5
-}
-
-.checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  box-sizing: border-box;
-  pointer-events: none;
 }
 </style>
