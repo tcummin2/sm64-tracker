@@ -5,6 +5,7 @@
   >
     <div>Seed: <input type="text" /></div>
     <style-switcher />
+    <div>{{ starCount }}</div>
     <div class="stages">
       <location v-for="location in stages"
         :key="location.name"
@@ -26,6 +27,7 @@ import StyleSwitcher from './StyleSwitcher'
 import StageSelector from './StageSelector'
 import Location from './Location'
 import Paths from './Paths'
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'App',
@@ -37,6 +39,7 @@ export default {
       focusedPainting: '',
     }
   },
+  computed: mapGetters(['starCount']),
   methods: {
     showStageSelector(painting, e) {
       this.focusedPainting = painting.name

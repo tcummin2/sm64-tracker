@@ -26,7 +26,11 @@ const getters = {
   displayStyle: state => state.displayStyle,
   completedStages: state => Object.keys(state.stars)
     .filter(stage => utils.flatten(Object.values(state.stars[stage])).every(star => star)),
-  isStageComplete: (state, getters) => stageName => getters.completedStages.includes(stageName)
+  isStageComplete: (state, getters) => stageName => getters.completedStages.includes(stageName),
+  starCount: state => {
+    var stars = Object.values(state.stars).map(stage => utils.flatten(Object.values(stage)))
+    return utils.flatten(stars).filter(star => star).length
+  }
 }
 
 const mutations = {
