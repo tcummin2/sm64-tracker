@@ -3,9 +3,7 @@
     @click="closeStageSelector"
     @touch="closeStageSelector"
   >
-    <div>Seed: <input type="text" /></div>
-    <style-switcher />
-    <div>{{ starCount }}</div>
+    <sidebar />
     <div class="stages">
       <location v-for="location in stages"
         :key="location.name"
@@ -23,15 +21,14 @@
 
 <script>
 import stages from '../stages.json'
-import StyleSwitcher from './StyleSwitcher'
 import StageSelector from './StageSelector'
 import Location from './Location'
 import Paths from './Paths'
-import { mapGetters } from 'vuex';
+import Sidebar from './Sidebar'
 
 export default {
   name: 'App',
-  components: { StyleSwitcher, Location, StageSelector, Paths },
+  components: { Location, StageSelector, Paths, Sidebar },
   data() {
     return {
       stages: stages,
@@ -39,7 +36,6 @@ export default {
       focusedPainting: '',
     }
   },
-  computed: mapGetters(['starCount']),
   methods: {
     showStageSelector(painting, e) {
       this.focusedPainting = painting.name
@@ -54,6 +50,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+#app {
+  display: flex;
+  height: 100vh;
+}
 .stages {
   display: flex;
   flex-direction: column;
