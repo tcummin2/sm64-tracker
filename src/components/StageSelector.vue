@@ -13,7 +13,7 @@
         @click.stop="selectStage(defaultStage.name)"
         @touch.stop="selectStage(defaultStage.name)"
       >
-        <span v-if="displayStyle === 'abbreviations'">{{ defaultStage.name }}</span>
+        <span v-if="!showImages">{{ defaultStage.name }}</span>
         <img v-else :src="require(`../../assets/${defaultStage.name.toLowerCase()}.png`)">
       </div>
     </div>
@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters, mapActions, mapState } from 'vuex'
 import stages from '../stages.json'
 
 const TOP_OFFSET = 19
@@ -34,7 +34,9 @@ export default {
       stages: [].concat(...stages.map(location => location.stages))
     }
   },
-  computed: Object.assign(mapGetters(['getStageNameByPainting', 'selectedStages', 'displayStyle']), {
+  computed: {
+    ...mapState(['showImages']),
+    ...mapGetters(['getStageNameByPainting', 'selectedStages',]),
     style() {
       return {
         top: `${this.coordinates.top + TOP_OFFSET + (window.scrollY || window.pageYOffset)}px`,
@@ -44,8 +46,9 @@ export default {
     stage() {
       return this.getStageNameByPainting(this.focusedPainting)
     }
-  }),
-  methods: Object.assign(mapActions(['assignStage']), {
+  },
+  methods: {
+    ...mapActions(['assignStage']),
     selectStage(stage) {
       this.assignStage({
         painting: this.focusedPainting,
@@ -53,7 +56,7 @@ export default {
       })
       this.$emit('close')
     }
-  })
+  }
 }
 </script>
 

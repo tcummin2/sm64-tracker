@@ -15,7 +15,7 @@ const utils = {
 const state = {
   paintingMap: {},
   stars: {},
-  displayStyle: 'image'
+  showImages: true
 }
 
 const getters = {
@@ -23,7 +23,6 @@ const getters = {
   selectedStages: state => Object.values(state.paintingMap).filter(stage => !!stage),
   getStarsByStage: state => name => state.stars[name],
   getStarsByCategoryByStage: (state, getters) => (stageName, category) => getters.getStarsByStage(stageName)[category],
-  displayStyle: state => state.displayStyle,
   completedStages: state => Object.keys(state.stars)
     .filter(stage => utils.flatten(Object.values(state.stars[stage])).every(star => star)),
   isStageComplete: (state, getters) => stageName => getters.completedStages.includes(stageName),
@@ -58,8 +57,8 @@ const mutations = {
       }))
     })))
   },
-  changeDisplayStyle(state, newStyle) {
-    state.displayStyle = newStyle
+  setShowImages(state, newStyle) {
+    state.showImages = newStyle
   }
 }
 
@@ -73,8 +72,8 @@ const actions = {
   resetState({commit}) {
     commit('resetState')
   },
-  changeDisplayStyle({commit}, newStyle) {
-    commit('changeDisplayStyle', newStyle)
+  setShowImages({commit}, newStyle) {
+    commit('setShowImages', newStyle)
   }
 }
 

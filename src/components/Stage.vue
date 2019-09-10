@@ -1,5 +1,5 @@
 <template>
-  <div class="stage" :class="{ images: displayStyle === 'image' }">
+  <div class="stage" :class="{ images: showImages }">
     <stage-display
       :stageName="painting.name"
       :leadsTo="stageName" />
@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapState } from 'vuex'
 import StarCategory from './StarCategory'
 import StageDisplay from './StageDisplay'
 
@@ -30,7 +30,8 @@ export default {
   props: ['painting'],
   components: { StarCategory, StageDisplay },
   computed: {
-    ...mapGetters(['getStageNameByPainting', 'getStarsByStage', 'displayStyle']),
+    ...mapState(['showImages']),
+    ...mapGetters(['getStageNameByPainting', 'getStarsByStage']),
     stageName() {
       return this.getStageNameByPainting(this.painting.name)
     },

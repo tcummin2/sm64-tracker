@@ -5,7 +5,9 @@
       <input class="seed" type="text" />
     </div>
     <style-switcher />
-    <div>{{ starCount }}</div>
+    <div>
+      Stars: {{ starCount }}
+    </div>
   </div>
 </template>
 
@@ -25,6 +27,7 @@ export default {
   width: 180px;
   border-right: 1px solid white;
   padding: 10px;
+  text-align: center;
 }
 
 .seed {

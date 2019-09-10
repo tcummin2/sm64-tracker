@@ -1,45 +1,30 @@
 <template>
   <div class="style-switcher">
-    <span v-for="style in styles"
-      :key="style.type"
-      class="style"
-    >
-      <input type="radio"
-        :name="style.type"
-        :value="style.type"
-        :id="style.type"
-        v-model="storeStyle">
-      <label :for="style.type">{{ style.label }}</label>
+    <span class="switch-field">
+      <label @click="shouldShowImages = !shouldShowImages">Images</label>
+      <toggle-button v-model="shouldShowImages"
+        :sync="true"
+        color="#007bfe" />
     </span>
   </div>
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
-
-const STYLES = [{
-  type: 'image',
-  label: 'Images'
-}, {
-  type: 'abbreviations',
-  label: 'Abbreviations'
-}]
+import { mapActions, mapState } from 'vuex'
+import { ToggleButton } from 'vue-js-toggle-button'
 
 export default {
   name: 'StyleSwitcher',
   props: ['painting'],
-  data() {
-    return {
-      styles: STYLES
+  components: { ToggleButton },
+  computed: {
+    ...mapState(['showImages']),
+    shouldShowImages: {
+      get() { return this.showImages },
+      set(value) { this.setShowImages(value) }
     }
   },
-  computed: Object.assign(mapGetters(['displayStyle']), {
-    storeStyle: {
-      get() { return this.displayStyle },
-      set(value) { this.changeDisplayStyle(value) }
-    }
-  }),
-  methods: mapActions(['changeDisplayStyle'])
+  methods: mapActions(['setShowImages'])
 }
 </script>
 

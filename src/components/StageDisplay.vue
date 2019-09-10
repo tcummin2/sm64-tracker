@@ -3,7 +3,7 @@
     <label class="image-container"
       :class="{ 'true-stage': isTrueStage }"
     >
-      <span v-if="!stageName || displayStyle === 'abbreviations'"
+      <span v-if="!stageName || !showImages"
         :class="{ completed: isCompleted }"
       >
         {{ stageName || '&nbsp;' }}
@@ -26,7 +26,7 @@ export default {
   props: ['stageName', 'leadsTo', 'isTrueStage'],
   computed: {
     ...mapGetters(['isStageComplete']),
-    ...mapState(['displayStyle']),
+    ...mapState(['showImages']),
     isCompleted() {
       return this.isStageComplete(this.leadsTo)
     }
