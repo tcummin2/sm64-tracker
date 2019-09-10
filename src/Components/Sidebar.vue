@@ -8,16 +8,18 @@
     <div>
       Stars: {{ starCount }}
     </div>
+    <timer />
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
 import StyleSwitcher from './StyleSwitcher'
+import Timer from './Timer'
 
 export default {
   name: 'Sidebar',
-  components: { StyleSwitcher },
+  components: { StyleSwitcher, Timer },
   computed: mapGetters(['starCount']),
 }
 </script>
