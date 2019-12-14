@@ -20,11 +20,12 @@
 </template>
 
 <script>
-import stages from '../stages.json'
-import StageSelector from './StageSelector'
-import Location from './Location'
-import Paths from './Paths'
-import Sidebar from './Sidebar'
+import stages from '../Config/stages.json'
+import StageSelector from '../Components/StageSelector'
+import Location from '../Components/Location'
+import Paths from '../Components/Paths'
+import Sidebar from '../Components/Sidebar'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'App',
@@ -36,7 +37,11 @@ export default {
       focusedPainting: '',
     }
   },
+  mounted() {
+    this.resetState()
+  },
   methods: {
+    ...mapActions(['resetState']),
     showStageSelector(painting, e) {
       this.focusedPainting = painting.name
       this.stageSelectorCoordinates = e.target.getBoundingClientRect()
@@ -61,3 +66,4 @@ export default {
   flex-wrap: wrap;
 }
 </style>
+

@@ -9,10 +9,10 @@
         {{ stageName || '&nbsp;' }}
       </span>
       <img v-else
-        :src="require(`../../assets/${stageName.toLowerCase()}.png`)"
+        :src="require(`../assets/${stageName.toLowerCase()}.png`)"
         :class="{ completed: isCompleted }">
       <img v-if="isCompleted"
-        :src="require('../../assets/checkmark.svg')"
+        :src="require('../assets/checkmark.svg')"
         class="checkmark">
     </label>
   </div>

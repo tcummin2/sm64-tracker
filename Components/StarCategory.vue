@@ -6,7 +6,7 @@
       :class="{ selected: isSelected(i) }"
       @click="toggle(i)"
       @touch="toggle(i)"
-      :src="require(`../../assets/${fileName}`)"
+      :src="require(`../assets/${fileName}`)"
     >
   </div>
 </template>

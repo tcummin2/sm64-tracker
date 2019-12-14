@@ -1,8 +1,5 @@
 import Vue from 'vue'
-import Vuex from 'vuex'
-import stages from './stages.json'
-
-Vue.use(Vuex)
+import stages from '../Config/stages.json'
 
 const utils = {
   toObject: (arr, func) => Object.assign(...arr.map(func)),
@@ -12,13 +9,13 @@ const utils = {
   flatten: arr => [].concat(...arr)
 }
 
-const state = {
+export const state = () => ({
   paintingMap: {},
   stars: {},
   showImages: true
-}
+})
 
-const getters = {
+export const getters = {
   getStageNameByPainting: state => painting => state.paintingMap[painting],
   selectedStages: state => Object.values(state.paintingMap).filter(stage => !!stage),
   getStarsByStage: state => name => state.stars[name],
@@ -32,7 +29,7 @@ const getters = {
   }
 }
 
-const mutations = {
+export const mutations = {
   assignStage(state, { painting, stage }) {
     Object.keys(state.paintingMap).forEach(mappedStage => {
       if (state.paintingMap[mappedStage] === stage) {
@@ -62,7 +59,7 @@ const mutations = {
   }
 }
 
-const actions = {
+export const actions = {
   assignStage({commit}, stageInfo) {
     commit('assignStage', stageInfo)
   },
@@ -76,10 +73,3 @@ const actions = {
     commit('setShowImages', newStyle)
   }
 }
-
-export default new Vuex.Store({
-  state,
-  getters,
-  actions,
-  mutations
-})

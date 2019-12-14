@@ -14,7 +14,7 @@
         @touch.stop="selectStage(defaultStage.name)"
       >
         <span v-if="!showImages">{{ defaultStage.name }}</span>
-        <img v-else :src="require(`../../assets/${defaultStage.name.toLowerCase()}.png`)">
+        <img v-else :src="require(`../assets/${defaultStage.name.toLowerCase()}.png`)">
       </div>
     </div>
   </div>
@@ -22,7 +22,7 @@
 
 <script>
 import { mapGetters, mapActions, mapState } from 'vuex'
-import stages from '../stages.json'
+import stages from '../Config/stages.json'
 
 const TOP_OFFSET = 19
 
