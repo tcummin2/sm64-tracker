@@ -4,7 +4,8 @@
       <label @click="shouldShowImages = !shouldShowImages">Images</label>
       <toggle-button v-model="shouldShowImages"
         :sync="true"
-        color="#007bfe" />
+        color="#007bfe"
+      />
     </span>
   </div>
 </template>
@@ -15,8 +16,8 @@ import { ToggleButton } from 'vue-js-toggle-button'
 
 export default {
   name: 'StyleSwitcher',
-  props: ['painting'],
   components: { ToggleButton },
+  props: { painting: String },
   computed: {
     ...mapState(['showImages']),
     shouldShowImages: {

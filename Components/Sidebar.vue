@@ -2,7 +2,7 @@
   <div class="sidebar">
     <div>
       Seed:
-      <input class="seed" type="text" />
+      <input class="seed" type="text">
     </div>
     <style-switcher />
     <div>
@@ -20,7 +20,7 @@ import Timer from './Timer'
 export default {
   name: 'Sidebar',
   components: { StyleSwitcher, Timer },
-  computed: mapGetters(['starCount']),
+  computed: mapGetters(['starCount'])
 }
 </script>
 

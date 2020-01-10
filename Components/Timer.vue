@@ -2,14 +2,26 @@
   <div>
     <div class="clock">
       <div>{{ clock }}</div>
-      <button v-if="stopped" @click="start">Start</button>
-      <button v-else @click="stop">Stop</button>
-      <button @click="reset" :disabled="!stopped">Reset</button>
+      <button v-if="stopped" @click="start">
+        Start
+      </button>
+      <button v-else @click="stop">
+        Stop
+      </button>
+      <button :disabled="!stopped" @click="reset">
+        Reset
+      </button>
     </div>
     <div class="splits">
       <div>
-        Split at <input type="number" min="1" max="120" step="1"
-          v-model.number="splitAt" /> Stars
+        Split at
+        <input v-model.number="splitAt"
+          type="number"
+          min="1"
+          max="120"
+          step="1"
+        >
+        Stars
       </div>
       <div v-for="(split, i) in splits"
         :key="i"
@@ -43,6 +55,12 @@ export default {
       splitAt: 10
     }
   },
+  computed: {
+    ...mapGetters(['starCount']),
+    stopped() {
+      return !this.timeBegan || this.timeStopped
+    }
+  },
   watch: {
     starCount(newValue, oldValue) {
       if (!this.stopped && newValue > oldValue && newValue % this.splitAt === 0) {
@@ -50,12 +68,6 @@ export default {
       } else if (oldValue > newValue) {
         this.splits = this.splits.filter(split => split.stars === this.oldValue)
       }
-    }
-  },
-  computed: {
-    ...mapGetters(['starCount']),
-    stopped() {
-      return !this.timeBegan || this.timeStopped
     }
   },
   methods: {

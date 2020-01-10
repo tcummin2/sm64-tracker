@@ -9,11 +9,13 @@
         :key="location.name"
         :name="location.name"
         :stages="location.stages"
-        @select-stage="showStageSelector" />
+        @select-stage="showStageSelector"
+      />
       <stage-selector v-show="focusedPainting"
         :focusedPainting="focusedPainting"
         :coordinates="stageSelectorCoordinates"
-        @close="closeStageSelector" />
+        @close="closeStageSelector"
+      />
       <paths />
     </div>
   </div>
@@ -34,7 +36,7 @@ export default {
     return {
       stages: stages,
       stageSelectorCoordinates: {},
-      focusedPainting: '',
+      focusedPainting: ''
     }
   },
   mounted() {

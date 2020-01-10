@@ -28,7 +28,10 @@ const TOP_OFFSET = 19
 
 export default {
   name: 'StageSelector',
-  props: ['focusedPainting', 'coordinates'],
+  props: {
+    focusedPainting: String,
+    coordinates: Object
+  },
   data() {
     return {
       stages: [].concat(...stages.map(location => location.stages))
@@ -36,7 +39,7 @@ export default {
   },
   computed: {
     ...mapState(['showImages']),
-    ...mapGetters(['getStageNameByPainting', 'selectedStages',]),
+    ...mapGetters(['getStageNameByPainting', 'selectedStages']),
     style() {
       return {
         top: `${this.coordinates.top + TOP_OFFSET + (window.scrollY || window.pageYOffset)}px`,

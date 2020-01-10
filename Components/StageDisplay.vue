@@ -10,10 +10,12 @@
       </span>
       <img v-else
         :src="require(`../assets/${stageName.toLowerCase()}.png`)"
-        :class="{ completed: isCompleted }">
+        :class="{ completed: isCompleted }"
+      >
       <img v-if="isCompleted"
         :src="require('../assets/checkmark.svg')"
-        class="checkmark">
+        class="checkmark"
+      >
     </label>
   </div>
 </template>
@@ -23,7 +25,11 @@ import { mapGetters, mapState } from 'vuex'
 
 export default {
   name: 'StageDisplay',
-  props: ['stageName', 'leadsTo', 'isTrueStage'],
+  props: {
+    stageName: String,
+    leadsTo: String,
+    isTrueStage: Boolean
+  },
   computed: {
     ...mapGetters(['isStageComplete']),
     ...mapState(['showImages']),

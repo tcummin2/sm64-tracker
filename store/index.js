@@ -60,16 +60,16 @@ export const mutations = {
 }
 
 export const actions = {
-  assignStage({commit}, stageInfo) {
+  assignStage({ commit }, stageInfo) {
     commit('assignStage', stageInfo)
   },
-  toggleStar({commit}, itemInfo) {
+  toggleStar({ commit }, itemInfo) {
     commit('toggleStar', itemInfo)
   },
-  resetState({commit}) {
+  resetState({ commit }) {
     commit('resetState')
   },
-  setShowImages({commit}, newStyle) {
+  setShowImages({ commit }, newStyle) {
     commit('setShowImages', newStyle)
   }
 }

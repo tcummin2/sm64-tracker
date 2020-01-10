@@ -4,9 +4,9 @@
       :key="i"
       class="star"
       :class="{ selected: isSelected(i) }"
+      :src="require(`../assets/${fileName}`)"
       @click="toggle(i)"
       @touch="toggle(i)"
-      :src="require(`../assets/${fileName}`)"
     >
   </div>
 </template>
@@ -16,8 +16,12 @@ import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'StarCategory',
-  props: ['category', 'stageName'],
-  computed: Object.assign(mapGetters(['getStarsByCategoryByStage']), {
+  props: {
+    category: String,
+    stageName: String
+  },
+  computed: {
+    ...mapGetters(['getStarsByCategoryByStage']),
     stars() {
       return this.getStarsByCategoryByStage(this.stageName, this.category)
     },
@@ -32,8 +36,9 @@ export default {
         mips: 'mips.png'
       }[this.category]
     }
-  }),
-  methods: Object.assign(mapActions(['toggleStar']), {
+  },
+  methods: {
+    ...mapActions(['toggleStar']),
     toggle(i) {
       this.toggleStar({
         stageName: this.stageName,
@@ -44,7 +49,7 @@ export default {
     isSelected(i) {
       return !!this.stars[i]
     }
-  })
+  }
 }
 </script>
 

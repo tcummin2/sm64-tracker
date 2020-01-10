@@ -1,19 +1,27 @@
 <template>
   <div class="paths">
-    <div class="title">Paths</div>
-    <div v-for="(path, i) in paths" :key="i" class="path">
+    <div class="title">
+      Paths
+    </div>
+    <div v-for="(path, i) in paths"
+      :key="i"
+      class="path"
+    >
       <span v-for="(stage, j) in path" :key="j">
         <stage-display
           :stageName="stage"
-          :leadsTo="j + 1 < path.length ? path[j + 1] : path[1]" />
-        <span v-if="j + 1 < path.length">=></span>
+          :leadsTo="j + 1 < path.length ? path[j + 1] : path[1]"
+        />
+        <span v-if="j + 1 < path.length">
+          =>
+        </span>
       </span>
     </div>
   </div>
 </template>
 
 <script>
-import { mapGetters, mapState } from 'vuex'
+import { mapState } from 'vuex'
 import StageDisplay from './StageDisplay'
 
 const setDifference = (arr1, arr2) => {
@@ -51,7 +59,7 @@ export default {
         var firstStage = currentPath[0]
         var pathAlreadyAdded = pathList.some((otherPath, j) => i !== j && !setDifference(currentPath, otherPath).length)
 
-        while(!pathAlreadyAdded) {
+        while (!pathAlreadyAdded) {
           newPath.push(...currentPath)
           var lastStage = currentPath[currentPath.length - 1]
 

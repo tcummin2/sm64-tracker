@@ -2,8 +2,11 @@
   <div class="stage" :class="{ images: showImages }">
     <stage-display
       :stageName="painting.name"
-      :leadsTo="stageName" />
-    <div class="arrow">=></div>
+      :leadsTo="stageName"
+    />
+    <div class="arrow">
+      =>
+    </div>
     <div class="stage-name"
       :class="{ empty: !stageName }"
       @click.stop="selectStage"
@@ -15,7 +18,8 @@
       <star-category v-for="category in starCategories"
         :key="category"
         :stageName="stageName"
-        :category="category" />
+        :category="category"
+      />
     </div>
   </div>
 </template>
@@ -27,8 +31,10 @@ import StageDisplay from './StageDisplay'
 
 export default {
   name: 'Stage',
-  props: ['painting'],
   components: { StarCategory, StageDisplay },
+  props: {
+    painting: Object
+  },
   computed: {
     ...mapState(['showImages']),
     ...mapGetters(['getStageNameByPainting', 'getStarsByStage']),
